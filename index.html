@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödev Yapan</title>
+</head>
+<body>
+    <div id="yaff">
+        <h1>Site Chrome'da çalışmaz.Site Firefox'ta çalışır.Firefox'un indirme linki aşağıda.</h1>
+        <p>En iyi bilgisayarda çalışabilir.Ve telefonda çalışmaz.</p>
+        <a href="https://www.firefox.com/tr/thanks/">Firefox</a>
+    </div>
+    <div id="normal">
+<h2>Matematik:</h2>
+<h3>Hesap Makinesi:</h3>
+<p id="snc">Sonuç: </p>
+<input type="number" id="sayi1">
+<input type="number" id="sayi2">
+<select name="" id="islem">
+    <option value="topla">Topla</option>
+    <option value="cikar">Çıkar</option>
+    <option value="bol">Böl</option>
+    <option value="carp">Çarp</option>
+    <option value="us">Üs</option>
+    <option value="karekok">Karekök (ilk değer)</option>
+    <option value="kupkok">Küpkök (ilk değer)</option>
+    <option value="faktoriyel">Faktöriyel (ilk değer)</option>
+    <option value="sinus">Sinüs (ilk değer)</option>
+    <option value="kosinus">Kosinüs (ilk değer)</option>
+    <option value="tanjant">Tanjant (ilk değer)</option>
+    <option value="log">Logaritma (ilk değer)</option>
+    <option value="hip">Hipotenüs</option>
+    <option value="ort">Ortalama</option>
+</select>
+<button onclick="C()">Çalıştır.</button>
+<h3>Matematiksel sabitler:</h3>
+<table border="1">
+    <tr>
+        <th>Sabit</th>
+        <th>Değer</th>
+    </tr>
+    <tr>
+        <td>Euler</td>
+        <td>2.718</td>
+    </tr>
+    <tr>
+        <td>Pi</td>
+        <td>3.141</td>
+    </tr>
+    <tr>
+        <td>√2</td>
+        <td>1.414</td>
+    </tr>
+</table>
+    </div>
+    <script>
+        if(navigator.userAgent.includes("Firefox") && (navigator.userAgent.includes("Win"))){
+            document.getElementById("yaff").style.display = "none";
+        }
+        else{
+            document.getElementById("normal").style.display = "none";
+        }
+        function fkt(sayi){
+            snc = 1;
+            for(var i=1;i <= sayi;i++){
+                snc *= i;
+            }
+            return snc;
+        }
+        function C(){
+            var s1 = parseFloat(document.getElementById("sayi1").value);
+            var s2 = parseFloat(document.getElementById("sayi2").value);
+            var yntm = document.getElementById("islem").value;
+            var snc = null;
+            if(yntm == "topla") snc = s1 + s2;
+            else if(yntm == "cikar") snc = s1 - s2;
+            else if(yntm == "carp") snc = s1 * s2;
+            else if(yntm == "bol") snc = s1 / s2;
+            else if(yntm == "us") snc = s1 ** s2;
+            else if(yntm == "karekok") snc = Math.sqrt(s1);
+            else if(yntm == "kupkok") snc = Math.cbrt(s1);
+            else if(yntm == "faktoriyel") snc = fkt(s1);
+            else if(yntm == "sinus") snc = Math.sin(s1);
+            else if(yntm == "kosinus") snc = Math.cos(s1);
+            else if(yntm == "tanjant") snc = Math.tan(s1);
+            else if(yntm == "log") snc = Math.log(s1);
+            else if(yntm == "hip") snc = Math.hypot(s1, s2);
+            else if(yntm == "ort") snc = (s1 + s2) / 2;
+            document.getElementById("snc").textContent = "Sonuç: " + snc;
+        }
+    </script>
+</body>
+</html>
